@@ -1,11 +1,12 @@
 from django.db import models
 
 from tickets import Ticket
+from .utils import speech_to_text
 
 class AudioManager(models.Model):
     def create(self, record):
         audio = self.model(record = record)
-        
+        audio.text = speech_to_text(audio.record)
         audio.save()
 
 class Audio(models.Model):
