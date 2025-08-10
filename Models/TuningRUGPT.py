@@ -14,12 +14,13 @@ df = pd.read_excel("L_proceed.xlsx")  # замените на ваш файл
 
 # Подготовка данных в формат "вход -> выход"
 df['text'] = df.apply(
-    lambda row: f"Заявка: {row['A']}\nГруппа: {row['B']}\nЗадача: {row['C']}\n", 
+    lambda row: f"Заявка: {row['A']}\nГруппа: {row['B']}\nЗадача: {row['C']}\nКритичность: {row['D']}\n",
     axis=1
 )
 
 # Преобразование в Dataset
 dataset = Dataset.from_pandas(df[['text']])
+eval_dataset = Dataset.from_pandas(df[['text']])
 
 # Настройка LoRA
 lora_config = LoraConfig(

@@ -12,12 +12,12 @@ class TunedLLMUsage:
             generated_text = generated_text.split("Заявка:", 1)[1].strip()
         lines = [line.strip() for line in generated_text.split('\n') if line.strip()]
         request = lines[0] if len(lines) > 0 else generated_text
-        group = lines[1].split(":")[1].strip() if len(lines) > 1 and ":" in lines[1] else "Не указано"
-        task = lines[2].split(":")[1].strip() if len(lines) > 2 and ":" in lines[2] else "Не указано"
+        task = lines[1].split(":")[1].strip() if len(lines) > 1 and ":" in lines[1] else "Не указано"
+        crit = lines[2].split(":")[1].strip() if len(lines) > 2 and ":" in lines[2] else "Не указано"
         return {
             "request": request,
-            "group": group,
-            "task": task
+            "task": task,
+            "critical": crit
         }
 
     def generate_response(self, prompt):
@@ -28,9 +28,9 @@ class TunedLLMUsage:
 
 
 if __name__ == "__main__":
-    llm = TunedLLMUsage("fine_tuned_model_small")
+    llm = TunedLLMUsage("fine_tuned_model_small_3")
     result = llm.generate_response("Прошу демонтировать лампу во втором подъезде по причине излишней яркости")
     print("Полный ответ:", result)
     print(f"Заявка: {result['request']}")# Не использовать
-    print(f"Группа: {result['group']}")
-    print(f"Задача: {result['task']}")
+    print(f"Группа: {result['task']}")
+    print(f"Задача: {result['critical']}")

@@ -4,88 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2277f113-51fc-489e-aef8-253a526f7fe5" name="Changes" comment="Initialise">
-      <change afterPath="$PROJECT_DIR$/Models/MP3ToText.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/SpeechToTextProcessor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/TuningRUGPT.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/UsageLLM.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/README.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/bin/ffmpeg.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/bin/ffplay.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/bin/ffprobe.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/community.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/default.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/developer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/faq.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/fate.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg-all.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg-bitstream-filters.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg-codecs.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg-devices.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg-filters.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg-formats.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg-protocols.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg-resampler.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg-scaler.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg-utils.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffplay-all.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffplay.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffprobe-all.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffprobe.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/general.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/git-howto.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/libavcodec.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/libavdevice.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/libavfilter.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/libavformat.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/libavutil.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/libswresample.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/libswscale.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/mailing-list-faq.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/nut.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/platform.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/style.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/presets/libvpx-1080p.ffpreset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/presets/libvpx-1080p50_60.ffpreset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/presets/libvpx-360p.ffpreset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/presets/libvpx-720p.ffpreset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/presets/libvpx-720p50_60.ffpreset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/fine_tuned_model_large/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/fine_tuned_model_large/adapter_config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/fine_tuned_model_large/adapter_model.safetensors" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/fine_tuned_model_large/merges.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/fine_tuned_model_large/special_tokens_map.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/fine_tuned_model_large/tokenizer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/fine_tuned_model_large/tokenizer_config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/fine_tuned_model_large/vocab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/fine_tuned_model_small/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/fine_tuned_model_small/adapter_config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/fine_tuned_model_small/adapter_model.safetensors" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/fine_tuned_model_small/merges.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/fine_tuned_model_small/special_tokens_map.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/fine_tuned_model_small/tokenizer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/fine_tuned_model_small/tokenizer_config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/fine_tuned_model_small/vocab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/README" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/am/final.mdl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/conf/mfcc.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/conf/model.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/graph/Gr.fst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/graph/HCLr.fst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/graph/disambig_tid.int" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/graph/phones/word_boundary.int" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/ivector/final.dubm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/ivector/final.ie" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/ivector/final.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/ivector/global_cmvn.stats" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/ivector/online_cmvn.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/ivector/splice.conf" afterDir="false" />
+    <list default="true" id="2277f113-51fc-489e-aef8-253a526f7fe5" name="Changes" comment="Models version 0.1 - minimal working">
+      <change afterPath="$PROJECT_DIR$/Models/ClassificationModelLearning.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/ClassificationUsage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/label_encoder.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/text_classifier.keras" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/LORAEducationLLMForDangerAnalysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/LORAEducationLLMForDangerAnalysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/TextToSpeechPreProcessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/TextToSpeechPreProcessor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/LORAEducationLLMForDangerAnalysis.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/TuningRUGPT.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/TuningRUGPT.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,6 +57,8 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Python.ClassificationModelLearning.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ClassificationUsage.executor&quot;: &quot;Run&quot;,
     &quot;Python.ExcelPreProcessor.executor&quot;: &quot;Run&quot;,
     &quot;Python.LORAEducationLLMForDangerAnalysis.executor&quot;: &quot;Run&quot;,
     &quot;Python.MP3ToWAV.executor&quot;: &quot;Run&quot;,
@@ -201,7 +129,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754585297565</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Models version 0.1 - minimal working">
+      <option name="closed" value="true" />
+      <created>1754733720088</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1754733720088</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -217,6 +153,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initialise" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initialise" />
+    <MESSAGE value="Models version 0.1 - minimal working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Models version 0.1 - minimal working" />
   </component>
 </project>
