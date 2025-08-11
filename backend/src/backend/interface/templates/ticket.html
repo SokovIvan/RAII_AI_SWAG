@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детали анализа | AI Swag</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #00d2ff;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        @font-face {
+            font-family: 'Poppins';
+            src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .ticket-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .ticket-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .ticket-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: #666;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+        
+        .ticket-actions {
+            display: flex;
+            gap: 0.8rem;
+        }
+        
+        .ticket-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .card-title i {
+            color: var(--accent);
+        }
+        
+        .department-tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .department-support {
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .department-sales {
+            background-color: #e8f5e9;
+            color: #388e3c;
+        }
+        
+        .department-hr {
+            background-color: #f3e5f5;
+            color: #8e24aa;
+        }
+        
+        .confidence-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            background-color: #f0f0f0;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .audio-player {
+            width: 100%;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            background: #f5f5f5;
+        }
+        
+        .transcription-container {
+            margin-top: 1.5rem;
+        }
+        
+        .transcription-line {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .transcription-line:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .speaker {
+            font-weight: 600;
+            color: var(--primary);
+            min-width: 120px;
+        }
+        
+        .timestamp {
+            color: #666;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+        }
+        
+        .analysis-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .analysis-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .analysis-card h4 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .analysis-card i {
+            color: var(--accent);
+        }
+        
+        .key-phrases {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .phrase-tag {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            background-color: #e0e0e0;
+            font-size: 0.8rem;
+        }
+        
+        .sentiment-score {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .sentiment-bar {
+            flex: 1;
+            height: 8px;
+            background: linear-gradient(to right, #ff4d4d, #ffcc00, #4CAF50);
+            border-radius: 4px;
+            position: relative;
+        }
+        
+        .sentiment-marker {
+            position: absolute;
+            top: -4px;
+            width: 8px;
+            height: 16px;
+            background-color: var(--dark);
+            border-radius: 4px;
+            transform: translateX(-50%);
+        }
+        
+        .speaker-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .speaker-stat {
+            background: #f5f5f5;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .transcription-line {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .speaker {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-headphones"></i>
+                <span>AI Swag</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="upload_sound.html">Загрузить аудио</a></li>
+                <li><a href="tickets.html">Мои файлы</a></li>
+                <li><a href="#" class="btn">Профиль</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="tickets.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Назад к списку файлов
+        </a>
+        
+        <div class="ticket-header">
+            <div>
+                <h1 class="ticket-title">
+                    <i class="fas fa-file-audio"></i>
+                    Разговор с клиентом - Иван Петров
+                    <span class="department-tag department-support">Поддержка</span>
+                    <span class="confidence-badge">
+                        <i class="fas fa-check-circle" style="color: var(--success);"></i>
+                        92% точность
+                    </span>
+                </h1>
+                <div class="ticket-meta">
+                    <span><i class="far fa-clock"></i> 15 мин. 23 сек.</span>
+                    <span><i class="far fa-calendar-alt"></i> 15 мая 2023, 14:30</span>
+                    <span><i class="fas fa-microphone"></i> 2 говорящих</span>
+                    <span><i class="fas fa-database"></i> 2.4 MB (MP3)</span>
+                </div>
+            </div>
+            <div class="ticket-actions">
+                <button class="btn btn-primary">
+                    <i class="fas fa-download"></i> Скачать отчёт
+                </button>
+                <button class="btn btn-outline">
+                    <i class="fas fa-share-alt"></i> Поделиться
+                </button>
+            </div>
+        </div>
+        
+        <div class="ticket-card">
+            <div class="card-header">
+                <h2 class="card-title">
+                    <i class="fas fa-music"></i>
+                    Аудиозапись
+                </h2>
+                <div class="confidence-badge">
+                    <i class="fas fa-check-circle" style="color: var(--success);"></i>
+                    Качество звука: отличное
+                </div>
+            </div>
+            
+            <audio controls class="audio-player">
+                <source src="sample.mp3" type="audio/mpeg">
+                Ваш браузер не поддерживает аудио элемент.
+            </audio>
+            
+            <div class="transcription-container">
+                <h2 class="card-title" style="margin-bottom: 1rem;">
+                    <i class="fas fa-comments"></i>
+                    Полная расшифровка
+                </h2>
+                
+                <div class="transcription-line">
+                    <div class="speaker">Оператор <span class="timestamp">[00:00:12]</span></div>
+                    <div class="text">Здравствуйте, Иван! Спасибо за обращение в поддержку AI Swag. Чем могу помочь?</div>
+                </div>
+                
+                <div class="transcription-line">
+                    <div class="speaker">Клиент <span class="timestamp">[00:00:18]</span></div>
+                    <div class="text">Добрый день! У меня проблема с анализом аудиофайлов. Система не распознаёт речь в некоторых записях.</div>
+                </div>
+                
+                <div class="transcription-line">
+                    <div class="speaker">Оператор <span class="timestamp">[00:00:30]</span></div>
+                    <div class="text">Понятно. Можете уточнить, какие именно файлы вызывают проблемы? Это определённый формат или длительность?</div>
+                </div>
+                
+                <div class="transcription-line">
+                    <div class="speaker">Клиент <span class="timestamp">[00:00:42]</span></div>
+                    <div class="text">В основном это записи телефонных разговоров в формате MP3, продолжительностью более 30 минут.</div>
+                </div>
+                
+                <div class="transcription-line">
+                    <div class="speaker">AI Swag <span class="timestamp">[00:00:51]</span></div>
+                    <div class="text">
+                        <span class="department-tag department-support">Обнаружена проблема</span>
+                        Низкое качество записи (SNR < 15dB). Рекомендуем использовать внешний микрофон.
+                    </div>
+                </div>
+                
+                <div class="transcription-line">
+                    <div class="speaker">Оператор <span class="timestamp">[00:01:05]</span></div>
+                    <div class="text">Спасибо за информацию. Действительно, для длинных записей с низким соотношением сигнал/шум могут быть проблемы. Могу предложить несколько решений...</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ticket-card">
+            <div class="card-header">
+                <h2 class="card-title">
+                    <i class="fas fa-chart-bar"></i>
+                    Результаты анализа
+                </h2>
+            </div>
+            
+            <div class="analysis-results">
+                <div class="analysis-card">
+                    <h4><i class="fas fa-bullseye"></i> Ключевые темы</h4>
+                    <p>Основные темы, обнаруженные в разговоре:</p>
+                    <div class="key-phrases">
+                        <span class="phrase-tag">техническая проблема</span>
+                        <span class="phrase-tag">качество записи</span>
+                        <span class="phrase-tag">формат MP3</span>
+                        <span class="phrase-tag">длительность записи</span>
+                        <span class="phrase-tag">рекомендации</span>
+                    </div>
+                </div>
+                
+                <div class="analysis-card">
+                    <h4><i class="fas fa-smile"></i> Тональность разговора</h4>
+                    <p>Общая оценка эмоциональной окраски:</p>
+                    <div class="sentiment-score">
+                        <span>Негативная</span>
+                        <div class="sentiment-bar">
+                            <div class="sentiment-marker" style="left: 30%;"></div>
+                        </div>
+                        <span>Позитивная</span>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">
+                        <i class="fas fa-info-circle" style="color: var(--accent);"></i>
+                        Тональность: нейтрально-негативная (оценка: 3.2/10)
+                    </p>
+                </div>
+                
+                <div class="analysis-card">
+                    <h4><i class="fas fa-users"></i> Участники разговора</h4>
+                    <div class="speaker-stats">
+                        <div class="speaker-stat">
+                            <div style="font-weight: 600;">Оператор</div>
+                            <div>45% времени</div>
+                            <div>23 реплики</div>
+                        </div>
+                        <div class="speaker-stat">
+                            <div style="font-weight: 600;">Клиент</div>
+                            <div>55% времени</div>
+                            <div>18 реплик</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ticket-card">
+            <div class="card-header">
+                <h2 class="card-title">
+                    <i class="fas fa-cogs"></i>
+                    Технические данные
+                </h2>
+            </div>
+            
+            <div class="analysis-results">
+                <div class="analysis-card">
+                    <h4><i class="fas fa-waveform"></i> Акустический анализ</h4>
+                    <p><strong>Частота дискретизации:</strong> 44.1 kHz</p>
+                    <p><strong>Битрейт:</strong> 128 kbps</p>
+                    <p><strong>Соотношение сигнал/шум:</strong> 14.7 dB</p>
+                    <p><strong>Динамический диапазон:</strong> 42 dB</p>
+                </div>
+                
+                <div class="analysis-card">
+                    <h4><i class="fas fa-brain"></i> Распознавание речи</h4>
+                    <p><strong>Точность распознавания:</strong> 91.7%</p>
+                    <p><strong>Язык:</strong> Русский</p>
+                    <p><strong>Словарный запас:</strong> 87% известных слов</p>
+                    <p><strong>Скорость речи:</strong> 125 слов/мин (клиент)</p>
+                </div>
+                
+                <div class="analysis-card">
+                    <h4><i class="fas fa-tags"></i> Метки и категории</h4>
+                    <div class="key-phrases" style="margin-top: 0.5rem;">
+                        <span class="phrase-tag">техподдержка</span>
+                        <span class="phrase-tag">жалоба</span>
+                        <span class="phrase-tag">качество звука</span>
+                        <span class="phrase-tag">рекомендации</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div style="text-align: center; padding: 2rem 0; color: white;">
+                <p>&copy; 2025 AI Swag. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Анимация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            const transcriptionLines = document.querySelectorAll('.transcription-line');
+            
+            transcriptionLines.forEach((line, index) => {
+                setTimeout(() => {
+                    line.style.opacity = 1;
+                    line.style.transform = 'translateY(0)';
+                }, index * 100);
+                
+                line.style.opacity = 0;
+                line.style.transform = 'translateY(10px)';
+                line.style.transition = 'all 0.3s ease';
+            });
+            
+            // Имитация загрузки аудио анализа
+            setTimeout(() => {
+                const sentimentMarker = document.querySelector('.sentiment-marker');
+                sentimentMarker.style.transition = 'left 1.5s ease-out';
+                sentimentMarker.style.left = '30%';
+            }, 500);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои файлы | AI Swag</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #00d2ff;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        @font-face {
+            font-family: 'Poppins';
+            src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .page-title {
+            font-size: 2rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .tickets-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .filter-select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: white;
+        }
+        
+        .tickets-list {
+            list-style: none;
+        }
+        
+        .ticket-item {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .ticket-item:hover {
+            background-color: rgba(0, 210, 255, 0.05);
+        }
+        
+        .ticket-info {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .ticket-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .ticket-meta {
+            display: flex;
+            gap: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+        
+        .ticket-department {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+        
+        .department-support {
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .department-sales {
+            background-color: #e8f5e9;
+            color: #388e3c;
+        }
+        
+        .department-hr {
+            background-color: #f3e5f5;
+            color: #8e24aa;
+        }
+        
+        .department-legal {
+            background-color: #fff8e1;
+            color: #ff8f00;
+        }
+        
+        .ticket-status {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .status-completed {
+            background-color: #e8f5e9;
+            color: #388e3c;
+        }
+        
+        .status-processing {
+            background-color: #fff3e0;
+            color: #fb8c00;
+        }
+        
+        .status-error {
+            background-color: #ffebee;
+            color: #d32f2f;
+        }
+        
+        .ticket-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .action-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .view-btn {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+        
+        .download-btn {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 0.5rem;
+        }
+        
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .page-btn:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .page-btn.active {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border-color: transparent;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 4rem 0;
+            color: #666;
+        }
+        
+        .empty-state i {
+            font-size: 3rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .ticket-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .ticket-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-headphones"></i>
+                <span>AI Swag</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="upload_sound.html">Загрузить аудио</a></li>
+                <li><a href="tickets.html" class="active">Мои файлы</a></li>
+                <li><a href="#" class="btn">Профиль</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="page-header">
+            <h1 class="page-title">Мои файлы</h1>
+            <a href="upload_sound.html" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Новый анализ
+            </a>
+        </div>
+        
+        <div class="tickets-container">
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="department-filter">Отдел</label>
+                    <select id="department-filter" class="filter-select">
+                        <option value="all">Все отделы</option>
+                        <option value="support">Поддержка</option>
+                        <option value="sales">Продажи</option>
+                        <option value="hr">HR</option>
+                        <option value="legal">Юридический</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="status-filter">Статус</label>
+                    <select id="status-filter" class="filter-select">
+                        <option value="all">Все статусы</option>
+                        <option value="completed">Завершён</option>
+                        <option value="processing">В обработке</option>
+                        <option value="error">Ошибка</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="date-filter">Дата</label>
+                    <select id="date-filter" class="filter-select">
+                        <option value="all">За всё время</option>
+                        <option value="today">Сегодня</option>
+                        <option value="week">За неделю</option>
+                        <option value="month">За месяц</option>
+                    </select>
+                </div>
+            </div>
+            
+            <ul class="tickets-list">
+                <!-- Пример элемента списка -->
+                <li class="ticket-item">
+                    <div class="ticket-info">
+                        <div class="ticket-title">
+                            <i class="fas fa-file-audio"></i>
+                            Разговор с клиентом - Иван Петров
+                            <span class="ticket-department department-support">Поддержка</span>
+                        </div>
+                        <div class="ticket-meta">
+                            <span><i class="far fa-clock"></i> 15 мин. 23 сек.</span>
+                            <span><i class="far fa-calendar-alt"></i> 15 мая 2023, 14:30</span>
+                            <span><i class="fas fa-microphone"></i> 2 говорящих</span>
+                        </div>
+                    </div>
+                    <div class="ticket-status status-completed">
+                        <i class="fas fa-check-circle"></i> Завершён
+                    </div>
+                    <div class="ticket-actions">
+                        <button class="action-btn view-btn" onclick="window.location.href='ticket.html'">
+                            <i class="fas fa-eye"></i> Просмотр
+                        </button>
+                        <button class="action-btn download-btn">
+                            <i class="fas fa-download"></i> Скачать
+                        </button>
+                    </div>
+                </li>
+                
+                <!-- Второй пример -->
+                <li class="ticket-item">
+                    <div class="ticket-info">
+                        <div class="ticket-title">
+                            <i class="fas fa-file-audio"></i>
+                            Встреча с партнёрами
+                            <span class="ticket-department department-sales">Продажи</span>
+                        </div>
+                        <div class="ticket-meta">
+                            <span><i class="far fa-clock"></i> 42 мин. 10 сек.</span>
+                            <span><i class="far fa-calendar-alt"></i> 14 мая 2023, 10:15</span>
+                            <span><i class="fas fa-microphone"></i> 4 говорящих</span>
+                        </div>
+                    </div>
+                    <div class="ticket-status status-completed">
+                        <i class="fas fa-check-circle"></i> Завершён
+                    </div>
+                    <div class="ticket-actions">
+                        <button class="action-btn view-btn" onclick="window.location.href='ticket.html'">
+                            <i class="fas fa-eye"></i> Просмотр
+                        </button>
+                        <button class="action-btn download-btn">
+                            <i class="fas fa-download"></i> Скачать
+                        </button>
+                    </div>
+                </li>
+                
+                <!-- Третий пример -->
+                <li class="ticket-item">
+                    <div class="ticket-info">
+                        <div class="ticket-title">
+                            <i class="fas fa-file-audio"></i>
+                            Интервью с кандидатом
+                            <span class="ticket-department department-hr">HR</span>
+                        </div>
+                        <div class="ticket-meta">
+                            <span><i class="far fa-clock"></i> 35 мин. 45 сек.</span>
+                            <span><i class="far fa-calendar-alt"></i> 12 мая 2023, 16:20</span>
+                            <span><i class="fas fa-microphone"></i> 2 говорящих</span>
+                        </div>
+                    </div>
+                    <div class="ticket-status status-completed">
+                        <i class="fas fa-check-circle"></i> Завершён
+                    </div>
+                    <div class="ticket-actions">
+                        <button class="action-btn view-btn" onclick="window.location.href='ticket.html'">
+                            <i class="fas fa-eye"></i> Просмотр
+                        </button>
+                        <button class="action-btn download-btn">
+                            <i class="fas fa-download"></i> Скачать
+                        </button>
+                    </div>
+                </li>
+                
+                <!-- Четвёртый пример (в обработке) -->
+                <li class="ticket-item">
+                    <div class="ticket-info">
+                        <div class="ticket-title">
+                            <i class="fas fa-file-audio"></i>
+                            Техническое обсуждение
+                            <span class="ticket-department department-support">Поддержка</span>
+                        </div>
+                        <div class="ticket-meta">
+                            <span><i class="far fa-clock"></i> 28 мин. 12 сек.</span>
+                            <span><i class="far fa-calendar-alt"></i> Сегодня, 09:45</span>
+                            <span><i class="fas fa-microphone"></i> 3 говорящих</span>
+                        </div>
+                    </div>
+                    <div class="ticket-status status-processing">
+                        <i class="fas fa-sync-alt fa-spin"></i> В обработке (75%)
+                    </div>
+                    <div class="ticket-actions">
+                        <button class="action-btn view-btn" disabled>
+                            <i class="fas fa-eye"></i> Просмотр
+                        </button>
+                    </div>
+                </li>
+                
+                <!-- Пятый пример (ошибка) -->
+                <li class="ticket-item">
+                    <div class="ticket-info">
+                        <div class="ticket-title">
+                            <i class="fas fa-file-audio"></i>
+                            Юридическая консультация
+                            <span class="ticket-department department-legal">Юридический</span>
+                        </div>
+                        <div class="ticket-meta">
+                            <span><i class="far fa-clock"></i> 18 мин. 33 сек.</span>
+                            <span><i class="far fa-calendar-alt"></i> 10 мая 2023, 11:10</span>
+                            <span><i class="fas fa-microphone"></i> 2 говорящих</span>
+                        </div>
+                    </div>
+                    <div class="ticket-status status-error">
+                        <i class="fas fa-exclamation-circle"></i> Ошибка обработки
+                    </div>
+                    <div class="ticket-actions">
+                        <button class="action-btn view-btn" onclick="window.location.href='ticket.html'">
+                            <i class="fas fa-eye"></i> Просмотр
+                        </button>
+                        <button class="action-btn download-btn">
+                            <i class="fas fa-redo"></i> Повторить
+                        </button>
+                    </div>
+                </li>
+            </ul>
+            
+            <div class="pagination">
+                <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div style="text-align: center; padding: 2rem 0; color: white;">
+                <p>&copy; 2025 AI Swag. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Фильтрация тикетов
+        document.addEventListener('DOMContentLoaded', function() {
+            const departmentFilter = document.getElementById('department-filter');
+            const statusFilter = document.getElementById('status-filter');
+            const dateFilter = document.getElementById('date-filter');
+            const ticketItems = document.querySelectorAll('.ticket-item');
+            
+            function applyFilters() {
+                const departmentValue = departmentFilter.value;
+                const statusValue = statusFilter.value;
+                const dateValue = dateFilter.value;
+                
+                ticketItems.forEach(item => {
+                    const department = item.querySelector('.ticket-department').classList.contains(`department-${departmentValue}`) || departmentValue === 'all';
+                    const status = item.querySelector('.ticket-status').classList.contains(`status-${statusValue}`) || statusValue === 'all';
+                    
+                    // Простая логика для даты (в реальном приложении нужно сравнивать даты)
+                    const dateMatch = dateValue === 'all' || 
+                                     (dateValue === 'today' && item.querySelector('.ticket-meta').textContent.includes('Сегодня')) ||
+                                     (dateValue === 'week' && !item.querySelector('.ticket-meta').textContent.includes('Сегодня')) ||
+                                     true;
+                    
+                    if (department && status && dateMatch) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+            
+            departmentFilter.addEventListener('change', applyFilters);
+            statusFilter.addEventListener('change', applyFilters);
+            dateFilter.addEventListener('change', applyFilters);
+        });
+    </script>
+</body>
+</html>
