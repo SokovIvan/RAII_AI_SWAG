@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Детали анализа | AI Swag</title>
+    <title>ЖКХ Аналитика |AI Swag</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -16,6 +16,7 @@
             --warning: #ffc107;
             --danger: #dc3545;
         }
+        
         
         * {
             margin: 0;
@@ -360,45 +361,83 @@
                 min-width: auto;
             }
         }
+        .department-housing {
+            background-color: #e1f5fe;
+            color: #0277bd;
+        }
+        
+        .department-electricity {
+            background-color: #fff8e1;
+            color: #ff8f00;
+        }
+        
+        .department-water {
+            background-color: #e0f7fa;
+            color: #00838f;
+        }
+        
+        .department-repairs {
+            background-color: #f1f8e9;
+            color: #558b2f;
+        }
+        
+        .priority-high {
+            color: #d32f2f;
+            font-weight: 600;
+        }
+        
+        .priority-medium {
+            color: #fb8c00;
+            font-weight: 600;
+        }
+        
+        .priority-low {
+            color: #388e3c;
+            font-weight: 600;
+        }
+
+
+
+
     </style>
 </head>
 <body>
     <header>
         <nav>
             <div class="logo">
-                <i class="fas fa-headphones"></i>
-                <span>AI Swag</span>
+                <i class="fas fa-building"></i>
+                <span>ЖКХ Аналитика | AI Swag</span>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Главная</a></li>
-                <li><a href="upload_sound.html">Загрузить аудио</a></li>
-                <li><a href="tickets.html">Мои файлы</a></li>
-                <li><a href="#" class="btn">Профиль</a></li>
+                <li><a href="upload_sound.html">Загрузить обращение</a></li>
+                <li><a href="tickets.html">Мои обращения</a></li>
+                <li><a href="#" class="btn">Кабинет</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="container">
         <a href="tickets.html" class="back-link">
-            <i class="fas fa-arrow-left"></i> Назад к списку файлов
+            <i class="fas fa-arrow-left"></i> Назад к списку обращений
         </a>
         
         <div class="ticket-header">
             <div>
                 <h1 class="ticket-title">
                     <i class="fas fa-file-audio"></i>
-                    Разговор с клиентом - Иван Петров
-                    <span class="department-tag department-support">Поддержка</span>
+                    Обращение по адресу ул. Ленина, д.15, кв.42
+                    <span class="department-tag department-housing">Жилищные услуги</span>
                     <span class="confidence-badge">
                         <i class="fas fa-check-circle" style="color: var(--success);"></i>
-                        92% точность
+                        94% точность
                     </span>
                 </h1>
                 <div class="ticket-meta">
-                    <span><i class="far fa-clock"></i> 15 мин. 23 сек.</span>
-                    <span><i class="far fa-calendar-alt"></i> 15 мая 2023, 14:30</span>
-                    <span><i class="fas fa-microphone"></i> 2 говорящих</span>
-                    <span><i class="fas fa-database"></i> 2.4 MB (MP3)</span>
+                    <span><i class="far fa-clock"></i> 8 мин. 15 сек.</span>
+                    <span><i class="far fa-calendar-alt"></i> 15 Август 2025, 09:45</span>
+                    <span><i class="fas fa-microphone"></i> 1 говорящий</span>
+                    <span><i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i> <span class="priority-high">Высокий приоритет</span></span>
                 </div>
             </div>
             <div class="ticket-actions">
@@ -406,7 +445,7 @@
                     <i class="fas fa-download"></i> Скачать отчёт
                 </button>
                 <button class="btn btn-outline">
-                    <i class="fas fa-share-alt"></i> Поделиться
+                    <i class="fas fa-share-alt"></i> Переслать
                 </button>
             </div>
         </div>
@@ -415,11 +454,11 @@
             <div class="card-header">
                 <h2 class="card-title">
                     <i class="fas fa-music"></i>
-                    Аудиозапись
+                    Аудиозапись обращения
                 </h2>
                 <div class="confidence-badge">
                     <i class="fas fa-check-circle" style="color: var(--success);"></i>
-                    Качество звука: отличное
+                    Качество звука: хорошее
                 </div>
             </div>
             
@@ -435,36 +474,42 @@
                 </h2>
                 
                 <div class="transcription-line">
-                    <div class="speaker">Оператор <span class="timestamp">[00:00:12]</span></div>
-                    <div class="text">Здравствуйте, Иван! Спасибо за обращение в поддержку AI Swag. Чем могу помочь?</div>
+                    <div class="speaker">Обращение <span class="timestamp">[00:00:05]</span></div>
+                    <div class="text">Добрый день! Я живу по адресу улица Ленина, дом 15, квартира 42. Хочу сообщить о серьёзной проблеме с канализацией.</div>
                 </div>
                 
                 <div class="transcription-line">
-                    <div class="speaker">Клиент <span class="timestamp">[00:00:18]</span></div>
-                    <div class="text">Добрый день! У меня проблема с анализом аудиофайлов. Система не распознаёт речь в некоторых записях.</div>
-                </div>
-                
-                <div class="transcription-line">
-                    <div class="speaker">Оператор <span class="timestamp">[00:00:30]</span></div>
-                    <div class="text">Понятно. Можете уточнить, какие именно файлы вызывают проблемы? Это определённый формат или длительность?</div>
-                </div>
-                
-                <div class="transcription-line">
-                    <div class="speaker">Клиент <span class="timestamp">[00:00:42]</span></div>
-                    <div class="text">В основном это записи телефонных разговоров в формате MP3, продолжительностью более 30 минут.</div>
-                </div>
-                
-                <div class="transcription-line">
-                    <div class="speaker">AI Swag <span class="timestamp">[00:00:51]</span></div>
+                    <div class="speaker">AI Swag <span class="timestamp">[00:00:18]</span></div>
                     <div class="text">
-                        <span class="department-tag department-support">Обнаружена проблема</span>
-                        Низкое качество записи (SNR < 15dB). Рекомендуем использовать внешний микрофон.
+                        <span class="department-tag department-housing">Определён отдел: Аварийная служба</span>
+                        Обнаружены ключевые слова: "канализация", "протечка", "авария"
                     </div>
                 </div>
                 
                 <div class="transcription-line">
-                    <div class="speaker">Оператор <span class="timestamp">[00:01:05]</span></div>
-                    <div class="text">Спасибо за информацию. Действительно, для длинных записей с низким соотношением сигнал/шум могут быть проблемы. Могу предложить несколько решений...</div>
+                    <div class="speaker">Обращение <span class="timestamp">[00:00:35]</span></div>
+                    <div class="text">У нас уже третий день течёт канализационная труба на пятом этаже. Вонь страшная, вода капает на лестничную клетку. Соседи снизу жалуются, что у них на потолке пятна появились.</div>
+                </div>
+                
+                <div class="transcription-line">
+                    <div class="speaker">AI Swag <span class="timestamp">[00:01:10]</span></div>
+                    <div class="text">
+                        <span class="department-tag department-housing">Приоритет: Высокий</span>
+                        Автоматически создана заявка №ЖКХ-2025-0421 в аварийную службу
+                    </div>
+                </div>
+                
+                <div class="transcription-line">
+                    <div class="speaker">Обращение <span class="timestamp">[00:01:25]</span></div>
+                    <div class="text">Мы уже звонили в управляющую компанию вчера, но никто не пришёл. Это совершенно недопустимо! Прошу принять срочные меры.</div>
+                </div>
+                
+                <div class="transcription-line">
+                    <div class="speaker">AI Swag <span class="timestamp">[00:01:50]</span></div>
+                    <div class="text">
+                        <span class="department-tag department-housing">Рекомендация</span>
+                        Отправлено уведомление начальнику ЖЭУ. Ожидаемое время реагирования: 2 часа
+                    </div>
                 </div>
             </div>
         </div>
@@ -479,46 +524,39 @@
             
             <div class="analysis-results">
                 <div class="analysis-card">
-                    <h4><i class="fas fa-bullseye"></i> Ключевые темы</h4>
-                    <p>Основные темы, обнаруженные в разговоре:</p>
+                    <h4><i class="fas fa-bullseye"></i> Ключевые проблемы</h4>
+                    <p>Основные проблемы, обнаруженные в обращении:</p>
                     <div class="key-phrases">
-                        <span class="phrase-tag">техническая проблема</span>
-                        <span class="phrase-tag">качество записи</span>
-                        <span class="phrase-tag">формат MP3</span>
-                        <span class="phrase-tag">длительность записи</span>
-                        <span class="phrase-tag">рекомендации</span>
+                        <span class="phrase-tag">протечка канализации</span>
+                        <span class="phrase-tag">затопление</span>
+                        <span class="phrase-tag">неприятный запах</span>
+                        <span class="phrase-tag">повреждение имущества</span>
+                        <span class="phrase-tag">отсутствие реакции</span>
                     </div>
                 </div>
                 
                 <div class="analysis-card">
-                    <h4><i class="fas fa-smile"></i> Тональность разговора</h4>
-                    <p>Общая оценка эмоциональной окраски:</p>
+                    <h4><i class="fas fa-smile"></i> Эмоциональная окраска</h4>
+                    <p>Тональность обращения:</p>
                     <div class="sentiment-score">
-                        <span>Негативная</span>
+                        <span>Спокойная</span>
                         <div class="sentiment-bar">
-                            <div class="sentiment-marker" style="left: 30%;"></div>
+                            <div class="sentiment-marker" style="left: 20%;"></div>
                         </div>
-                        <span>Позитивная</span>
+                        <span>Эмоциональная</span>
                     </div>
                     <p style="margin-top: 1rem; font-size: 0.9rem;">
                         <i class="fas fa-info-circle" style="color: var(--accent);"></i>
-                        Тональность: нейтрально-негативная (оценка: 3.2/10)
+                        Тональность: негативная с элементами возмущения (оценка: 2.8/10)
                     </p>
                 </div>
                 
                 <div class="analysis-card">
-                    <h4><i class="fas fa-users"></i> Участники разговора</h4>
-                    <div class="speaker-stats">
-                        <div class="speaker-stat">
-                            <div style="font-weight: 600;">Оператор</div>
-                            <div>45% времени</div>
-                            <div>23 реплики</div>
-                        </div>
-                        <div class="speaker-stat">
-                            <div style="font-weight: 600;">Клиент</div>
-                            <div>55% времени</div>
-                            <div>18 реплик</div>
-                        </div>
+                    <h4><i class="fas fa-tachometer-alt"></i> Срочность</h4>
+                    <div style="margin-top: 1rem;">
+                        <p><strong>Приоритет:</strong> <span class="priority-high">Высокий</span></p>
+                        <p><strong>Рекомендуемый срок решения:</strong> 24 часа</p>
+                        <p><strong>Категория:</strong> Аварийная ситуация</p>
                     </div>
                 </div>
             </div>
@@ -528,36 +566,51 @@
             <div class="card-header">
                 <h2 class="card-title">
                     <i class="fas fa-cogs"></i>
-                    Технические данные
+                    Назначение и маршрутизация
                 </h2>
             </div>
             
             <div class="analysis-results">
                 <div class="analysis-card">
-                    <h4><i class="fas fa-waveform"></i> Акустический анализ</h4>
-                    <p><strong>Частота дискретизации:</strong> 44.1 kHz</p>
-                    <p><strong>Битрейт:</strong> 128 kbps</p>
-                    <p><strong>Соотношение сигнал/шум:</strong> 14.7 dB</p>
-                    <p><strong>Динамический диапазон:</strong> 42 dB</p>
+                    <h4><i class="fas fa-user-tie"></i> Ответственный отдел</h4>
+                    <div style="margin-top: 1rem;">
+                        <p><strong>Основной отдел:</strong> Аварийная служба ЖКХ</p>
+                        <p><strong>Дополнительно уведомлены:</strong></p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Управляющая компания "Наш Дом"</li>
+                            <li>Технический надзор района</li>
+                        </ul>
+                    </div>
                 </div>
                 
                 <div class="analysis-card">
-                    <h4><i class="fas fa-brain"></i> Распознавание речи</h4>
-                    <p><strong>Точность распознавания:</strong> 91.7%</p>
-                    <p><strong>Язык:</strong> Русский</p>
-                    <p><strong>Словарный запас:</strong> 87% известных слов</p>
-                    <p><strong>Скорость речи:</strong> 125 слов/мин (клиент)</p>
+                    <h4><i class="fas fa-history"></i> История обращений</h4>
+                    <div style="margin-top: 1rem;">
+                        <p><strong>По этому адресу за месяц:</strong> 3 обращения</p>
+                        <p><strong>Последнее:</strong> 10.05.2025 - Засор мусоропровода</p>
+                        <p><strong>Статус прошлого обращения:</strong> Решено</p>
+                    </div>
                 </div>
                 
                 <div class="analysis-card">
                     <h4><i class="fas fa-tags"></i> Метки и категории</h4>
                     <div class="key-phrases" style="margin-top: 0.5rem;">
-                        <span class="phrase-tag">техподдержка</span>
+                        <span class="phrase-tag">авария</span>
+                        <span class="phrase-tag">канализация</span>
+                        <span class="phrase-tag">срочно</span>
                         <span class="phrase-tag">жалоба</span>
-                        <span class="phrase-tag">качество звука</span>
-                        <span class="phrase-tag">рекомендации</span>
+                        <span class="phrase-tag">многоквартирный дом</span>
                     </div>
                 </div>
+            </div>
+            
+            <div style="margin-top: 2rem; padding: 1.5rem; background-color: #e8f5e9; border-radius: 8px;">
+                <h4 class="card-title" style="margin-bottom: 1rem;">
+                    <i class="fas fa-check-circle" style="color: var(--success);"></i>
+                    Текущий статус
+                </h4>
+                <p><strong>Заявка №ЖКХ-2025-0421</strong> принята в работу аварийной службой. Ожидайте специалиста в течение 2 часов.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">Последнее обновление: 15.05.2025 10:15</p>
             </div>
         </div>
     </div>
@@ -565,7 +618,7 @@
     <footer>
         <div class="container">
             <div style="text-align: center; padding: 2rem 0; color: white;">
-                <p>&copy; 2025 AI Swag. Все права защищены.</p>
+                <p>&copy; 2025 ЖКХ Аналитика. Все права защищены.</p>
             </div>
         </div>
     </footer>
@@ -586,11 +639,11 @@
                 line.style.transition = 'all 0.3s ease';
             });
             
-            // Имитация загрузки аудио анализа
+            // Имитация загрузки анализа
             setTimeout(() => {
                 const sentimentMarker = document.querySelector('.sentiment-marker');
                 sentimentMarker.style.transition = 'left 1.5s ease-out';
-                sentimentMarker.style.left = '30%';
+                sentimentMarker.style.left = '20%';
             }, 500);
         });
     </script>
