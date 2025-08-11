@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2277f113-51fc-489e-aef8-253a526f7fe5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/UI/UImain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="2277f113-51fc-489e-aef8-253a526f7fe5" name="Changes" comment="Models version 0.1 - minimal working">
+      <change afterPath="$PROJECT_DIR$/Models/ClassificationModelLearning.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/ClassificationUsage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/label_encoder.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/text_classifier.keras" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ExcelPreProcessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/ExcelPreProcessor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/L.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Models/L.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/LORAEducationLLMForDangerAnalysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/LORAEducationLLMForDangerAnalysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/TextToSpeechPreProcessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/TextToSpeechPreProcessor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/LORAEducationLLMForDangerAnalysis.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/TuningRUGPT.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/TuningRUGPT.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,14 +57,25 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Python.ClassificationModelLearning.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ClassificationUsage.executor&quot;: &quot;Run&quot;,
     &quot;Python.ExcelPreProcessor.executor&quot;: &quot;Run&quot;,
+    &quot;Python.LORAEducationLLMForDangerAnalysis.executor&quot;: &quot;Run&quot;,
+    &quot;Python.MP3ToWAV.executor&quot;: &quot;Run&quot;,
+    &quot;Python.SpeechToTextProcessor.executor&quot;: &quot;Run&quot;,
     &quot;Python.TextToSpeechPreProcessor.executor&quot;: &quot;Run&quot;,
+    &quot;Python.UsageLLM.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;modelsAI&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/IvanS/PycharmProjects/RAII_AI_SWAG/Models&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\IvanS\PycharmProjects\RAII_AI_SWAG\Models" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\IvanS\PycharmProjects\RAII_AI_SWAG\Models" />
       <recent name="C:\Users\IvanS\PycharmProjects\RAII_AI_SWAG" />
@@ -110,6 +121,39 @@
       <option name="presentableId" value="Default" />
       <updated>1754510862318</updated>
     </task>
+    <task id="LOCAL-00001" summary="Initialise">
+      <option name="closed" value="true" />
+      <created>1754585297565</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1754585297565</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Models version 0.1 - minimal working">
+      <option name="closed" value="true" />
+      <created>1754733720088</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1754733720088</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initialise" />
+    <MESSAGE value="Models version 0.1 - minimal working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Models version 0.1 - minimal working" />
   </component>
 </project>
