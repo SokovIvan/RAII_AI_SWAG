@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2277f113-51fc-489e-aef8-253a526f7fe5" name="Changes" comment="Models with UI - working">
+    <list default="true" id="2277f113-51fc-489e-aef8-253a526f7fe5" name="Changes" comment="Models with UI - working with Text">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/backend/backend/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/backend/backend/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/backend/interface/templates/upload_sound.html" beforeDir="false" afterPath="$PROJECT_DIR$/UI/backend/interface/templates/upload_sound.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/backend/interface/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/backend/interface/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/backend/interface/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/backend/interface/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -168,7 +170,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755018394747</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Models with UI - working with Text">
+      <option name="closed" value="true" />
+      <created>1755019555554</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1755019555554</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -188,6 +198,7 @@
     <MESSAGE value="Models version 1 - working tuned LLM and also a classifier model" />
     <MESSAGE value="Models with UI" />
     <MESSAGE value="Models with UI - working" />
-    <option name="LAST_COMMIT_MESSAGE" value="Models with UI - working" />
+    <MESSAGE value="Models with UI - working with Text" />
+    <option name="LAST_COMMIT_MESSAGE" value="Models with UI - working with Text" />
   </component>
 </project>

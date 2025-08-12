@@ -376,11 +376,19 @@ document.addEventListener('DOMContentLoaded', function() {
     if (this.files.length) {
       fileTitle.required = false;
       fileTitle.style.display = 'none';
-      fileTitle.previousElementSibling.style.display = 'none'; // Скрываем label
+      // Скрываем label поля
+      const label = fileTitle.previousElementSibling;
+      if (label && label.tagName === 'LABEL') {
+        label.style.display = 'none';
+      }
     } else {
       fileTitle.required = true;
       fileTitle.style.display = 'block';
-      fileTitle.previousElementSibling.style.display = 'block'; // Показываем label
+      // Показываем label поля
+      const label = fileTitle.previousElementSibling;
+      if (label && label.tagName === 'LABEL') {
+        label.style.display = 'block';
+      }
     }
   });
 
@@ -426,30 +434,20 @@ document.addEventListener('DOMContentLoaded', function() {
       },
     })
     .then(response => {
+      clearInterval(progressInterval);
+      progressBar.style.width = '100%';
+
       if (!response.ok) {
         return response.json().then(err => Promise.reject(err));
       }
       return response.json();
     })
     .then(data => {
-      clearInterval(progressInterval);
-      progressBar.style.width = '100%';
-
       if (data.status === 'success') {
         // Отображаем результаты
-        const result = data.result;
 
-        // Обновляем описание файла
-        fileDescription.value = result.prompt || title;
-
-        // Показываем предсказание отдела
-        document.getElementById('predictedDepartment').textContent = result.group;
-        document.getElementById('confidenceLevel').textContent = 'Высокая';
-        departmentPrediction.style.display = 'block';
-
-        // Показываем транскрипцию
-        document.getElementById('previewText').textContent = result.task;
-        transcriptionPreview.style.display = 'block';
+        // Выводим анализ в текстовое поле
+        fileDescription.value = data.result.analysis || '';
 
         // Прячем прогресс через 1 секунду
         setTimeout(() => {
@@ -463,7 +461,18 @@ document.addEventListener('DOMContentLoaded', function() {
     .catch(error => {
       clearInterval(progressInterval);
       progressContainer.style.display = 'none';
-      alert('Ошибка при загрузке файла: ' + (error.message || JSON.stringify(error)));
+
+      let errorMsg = 'Ошибка при загрузке файла: ';
+      if (error.message) {
+        errorMsg += error.message;
+      } else if (error.status) {
+        errorMsg += `HTTP ${error.status}: ${error.message || 'Ошибка сервера'}`;
+      } else {
+        errorMsg += 'Неизвестная ошибка';
+      }
+
+      alert(errorMsg);
+      console.error('Ошибка:', error);
     });
   });
 

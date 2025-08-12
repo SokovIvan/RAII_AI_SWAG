@@ -1,3 +1,5 @@
+import tempfile
+
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -5,6 +7,10 @@ import os
 from django.conf import settings
 from .ModelsAI.ModelsUsage import ModelsUsage
 import uuid
+import logging
+
+# Настройка логгера
+logger = logging.getLogger(__name__)
 
 # Создаем единственный экземпляр ModelsUsage
 models_processor = ModelsUsage()
@@ -26,9 +32,24 @@ def upload_file(request):
             text = request.POST['title'].strip()
             try:
                 result = models_processor.process_text(text)
+
+                # Форматируем результат
+                formatted_result = {
+                    "prompt": result["prompt"],
+                    "group": result["group"],
+                    "task": result["task"],
+                    "critical": result["critical"],
+                    "analysis": (
+                        f"Заявка - {result['prompt']}\n"
+                        f"Группа - {result['group']}\n"
+                        f"Задача - {result['task']}\n"
+                        f"Критичность - {result['critical']}"
+                    )
+                }
+
                 return JsonResponse({
                     'status': 'success',
-                    'result': result
+                    'result': formatted_result
                 })
             except Exception as e:
                 return JsonResponse({
@@ -40,35 +61,48 @@ def upload_file(request):
         elif request.FILES.get('audio_file'):
             audio_file = request.FILES['audio_file']
 
+            # Создаем MEDIA_ROOT если не существует
+            media_root = settings.MEDIA_ROOT
+            os.makedirs(media_root, exist_ok=True)
+
+            # Создаем подпапку для аудио
+            audio_dir = os.path.join(media_root, 'voices')
+            os.makedirs(audio_dir, exist_ok=True)
+
             # Генерируем уникальное имя файла
-            file_ext = os.path.splitext(audio_file.name)[1]
-            file_name = f"{uuid.uuid4()}{file_ext}"
-            file_path = os.path.join(settings.MEDIA_ROOT, file_name)
+            ext = os.path.splitext(audio_file.name)[1]
+            unique_filename = f"{uuid.uuid4().hex}{ext}"
+            file_path = os.path.join(audio_dir, unique_filename)
 
-            # Создаем директорию MEDIA_ROOT, если она не существует
-            os.makedirs(settings.MEDIA_ROOT, exist_ok=True)
-
-            # Сохраняем файл
+            # Сохраняем файл постоянно
             with open(file_path, 'wb+') as destination:
                 for chunk in audio_file.chunks():
                     destination.write(chunk)
 
-            # Обрабатываем файл
             try:
+                # Обрабатываем файл
                 result = models_processor.process_voice_file(file_path)
 
-                # Удаляем временный файл после обработки
-                if os.path.exists(file_path):
-                    os.remove(file_path)
+                # Форматируем результат
+                formatted_result = {
+                    "prompt": result["prompt"],
+                    "group": result["group"],
+                    "task": result["task"],
+                    "critical": result["critical"],
+                    "analysis": (
+                        f"Заявка - {result['prompt']}\n"
+                        f"Группа - {result['group']}\n"
+                        f"Задача - {result['task']}\n"
+                        f"Критичность - {result['critical']}"
+                    ),
+                    "file_path": file_path  # Добавляем путь для отладки
+                }
 
                 return JsonResponse({
                     'status': 'success',
-                    'result': result
+                    'result': formatted_result
                 })
             except Exception as e:
-                # Удаляем файл в случае ошибки
-                if os.path.exists(file_path):
-                    os.remove(file_path)
                 return JsonResponse({
                     'status': 'error',
                     'message': str(e)
