@@ -22,7 +22,21 @@
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-        
+        .progress-container {
+    display: none;
+    margin-top: 2rem;
+    background: #f1f1f1;
+    border-radius: 8px;
+    height: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    transition: width 0.3s ease;
+}
         body {
             background-color: #f8f9fa;
             color: var(--dark);
@@ -343,6 +357,113 @@
     </footer>
 
     <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const uploadForm = document.getElementById('uploadForm');
+  const fileInput = document.getElementById('fileInput');
+  const fileDescription = document.getElementById('fileDescription');
+  const departmentPrediction = document.getElementById('departmentPrediction');
+  const transcriptionPreview = document.getElementById('transcriptionPreview');
+  const progressContainer = document.createElement('div');
+  progressContainer.className = 'progress-container';
+  progressContainer.innerHTML = '<div class="progress-bar" id="progressBar"></div>';
+
+  // Вставляем контейнер прогресса перед кнопкой отправки
+  uploadForm.insertBefore(progressContainer, uploadForm.querySelector('.submit-btn'));
+
+  uploadForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const file = fileInput.files[0];
+    const title = document.getElementById('fileTitle').value;
+
+    if (!file && !title) {
+      alert('Пожалуйста, загрузите аудиофайл или введите текстовую заявку');
+      return;
+    }
+
+    // Показываем прогресс
+    progressContainer.style.display = 'block';
+    const progressBar = document.getElementById('progressBar');
+    progressBar.style.width = '0%';
+
+    // Создаем FormData
+    const formData = new FormData();
+    if (file) {
+      formData.append('audio_file', file);
+    }
+    if (title) {
+      formData.append('title', title);
+    }
+
+    // Имитация прогресса (в реальном приложении можно использовать axios с onUploadProgress)
+    let progress = 0;
+    const progressInterval = setInterval(() => {
+      progress += 5;
+      progressBar.style.width = `${Math.min(progress, 90)}%`;
+      if (progress >= 90) clearInterval(progressInterval);
+    }, 200);
+
+    // Отправка на сервер
+    fetch('/upload-file/', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'X-CSRFToken': getCookie('csrftoken'),
+      },
+    })
+    .then(response => response.json())
+    .then(data => {
+      clearInterval(progressInterval);
+      progressBar.style.width = '100%';
+
+      if (data.status === 'success') {
+        // Отображаем результаты
+        const result = data.result;
+
+        // Обновляем описание файла
+        fileDescription.value = result.prompt || title;
+
+        // Показываем предсказание отдела
+        document.getElementById('predictedDepartment').textContent = result.group;
+        document.getElementById('confidenceLevel').textContent = 'Высокая'; // Можно добавить реальный уровень уверенности из модели
+        departmentPrediction.style.display = 'block';
+
+        // Показываем транскрипцию
+        document.getElementById('previewText').textContent = result.task;
+        transcriptionPreview.style.display = 'block';
+
+        // Прячем прогресс через 1 секунду
+        setTimeout(() => {
+          progressContainer.style.display = 'none';
+        }, 1000);
+      } else {
+        alert('Ошибка: ' + (data.message || 'Неизвестная ошибка'));
+        progressContainer.style.display = 'none';
+      }
+    })
+    .catch(error => {
+      clearInterval(progressInterval);
+      progressContainer.style.display = 'none';
+      alert('Ошибка при загрузке файла: ' + error.message);
+    });
+  });
+
+  // Функция для получения CSRF токена
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+});
 document.addEventListener('DOMContentLoaded', function() {
   const fileInput = document.getElementById('fileInput');
   const fileInfo = document.getElementById('fileInfo');

@@ -4,147 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2277f113-51fc-489e-aef8-253a526f7fe5" name="Changes" comment="Models version 1 - working tuned LLM and also a classifier model">
-      <change afterPath="$PROJECT_DIR$/UI/backend/backend/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/backend/asgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/backend/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/backend/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/backend/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/db.sqlite3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/interface/ModelsAI/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/interface/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/interface/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/interface/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/interface/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/interface/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/interface/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/interface/templates/ticket.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/interface/templates/tickets.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/interface/templates/upload_sound.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/interface/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/interface/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/interface/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/processing/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/processing/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/processing/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/processing/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/processing/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/processing/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/processing/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/tickets/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/tickets/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/tickets/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/tickets/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/tickets/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/tickets/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UI/backend/tickets/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="2277f113-51fc-489e-aef8-253a526f7fe5" name="Changes" comment="Models with UI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ClassificationModelLearning.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ClassificationUsage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ExcelPreProcessor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/L.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/L_proceed.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/MP3ToText.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/SpeechToTextProcessor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/TextToSpeechPreProcessor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/TuningRUGPT.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/UsageLLM.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/README.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/bin/ffmpeg.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/bin/ffplay.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/bin/ffprobe.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/community.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/default.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/developer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/faq.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/fate.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg-all.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg-bitstream-filters.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg-codecs.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg-devices.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg-filters.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg-formats.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg-protocols.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg-resampler.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg-scaler.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg-utils.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffmpeg.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffplay-all.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffplay.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffprobe-all.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/ffprobe.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/general.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/git-howto.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/libavcodec.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/libavdevice.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/libavfilter.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/libavformat.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/libavutil.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/libswresample.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/libswscale.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/mailing-list-faq.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/nut.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/platform.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/doc/style.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/presets/libvpx-1080p.ffpreset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/presets/libvpx-1080p50_60.ffpreset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/presets/libvpx-360p.ffpreset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/presets/libvpx-720p.ffpreset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ffmpeg-7.1.1-essentials_build/presets/libvpx-720p50_60.ffpreset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_large/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_large/adapter_config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_large/adapter_model.safetensors" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_large/merges.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_large/special_tokens_map.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_large/tokenizer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_large/tokenizer_config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_large/vocab.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_large_3/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_large_3/adapter_config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_large_3/adapter_model.safetensors" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_large_3/merges.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_large_3/special_tokens_map.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_large_3/tokenizer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_large_3/tokenizer_config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_large_3/vocab.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_small/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_small/adapter_config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_small/adapter_model.safetensors" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_small/merges.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_small/special_tokens_map.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_small/tokenizer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_small/tokenizer_config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_small/vocab.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_small_3/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_small_3/adapter_config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_small_3/adapter_model.safetensors" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_small_3/merges.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_small_3/special_tokens_map.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_small_3/tokenizer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_small_3/tokenizer_config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/fine_tuned_model_small_3/vocab.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/label_encoder.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/text_classifier.keras" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/am/final.mdl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/conf/mfcc.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/conf/model.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/graph/Gr.fst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/graph/HCLr.fst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/graph/disambig_tid.int" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/graph/phones/word_boundary.int" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/ivector/final.dubm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/ivector/final.ie" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/ivector/final.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/ivector/global_cmvn.stats" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/ivector/online_cmvn.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/vosk-model-small-ru-0.22/vosk-model-small-ru-0.22/ivector/splice.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/UImain.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/backend/backend/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/backend/backend/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/backend/interface/templates/upload_sound.html" beforeDir="false" afterPath="$PROJECT_DIR$/UI/backend/interface/templates/upload_sound.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/backend/interface/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/backend/interface/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/backend/interface/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/backend/interface/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/readme.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="modelsAI" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -172,12 +38,22 @@
     &quot;assignee&quot;: &quot;SokovIvan&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/SokovIvan/RAII_AI_SWAG.git&quot;,
-    &quot;accountId&quot;: &quot;b7c2021f-fd69-43b3-a21d-cfb386f96c86&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/SokovIvan/RAII_AI_SWAG.git",
+    "accountId": "b7c2021f-fd69-43b3-a21d-cfb386f96c86"
+  },
+  "recentNewPullRequestHead": {
+    "server": {
+      "useHttp": false,
+      "host": "github.com",
+      "port": null,
+      "suffix": null
+    },
+    "owner": "SokovIvan",
+    "repository": "RAII_AI_SWAG"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -187,24 +63,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.ClassificationModelLearning.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ClassificationUsage.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ExcelPreProcessor.executor&quot;: &quot;Run&quot;,
-    &quot;Python.LORAEducationLLMForDangerAnalysis.executor&quot;: &quot;Run&quot;,
-    &quot;Python.MP3ToText.executor&quot;: &quot;Run&quot;,
-    &quot;Python.MP3ToWAV.executor&quot;: &quot;Run&quot;,
-    &quot;Python.SpeechToTextProcessor.executor&quot;: &quot;Run&quot;,
-    &quot;Python.TextToSpeechPreProcessor.executor&quot;: &quot;Run&quot;,
-    &quot;Python.UsageLLM.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;modelsAI&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/IvanS/PycharmProjects/RAII_AI_SWAG/UI&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.ClassificationModelLearning.executor": "Run",
+    "Python.ClassificationUsage.executor": "Run",
+    "Python.ExcelPreProcessor.executor": "Run",
+    "Python.LORAEducationLLMForDangerAnalysis.executor": "Run",
+    "Python.MP3ToText.executor": "Run",
+    "Python.MP3ToWAV.executor": "Run",
+    "Python.SpeechToTextProcessor.executor": "Run",
+    "Python.TextToSpeechPreProcessor.executor": "Run",
+    "Python.UsageLLM.executor": "Run",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "#6 on develop",
+    "last_opened_file_path": "C:/Users/IvanS/PycharmProjects/RAII_AI_SWAG/UI",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\IvanS\PycharmProjects\RAII_AI_SWAG\UI" />
@@ -279,7 +155,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754844317624</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Models with UI">
+      <option name="closed" value="true" />
+      <created>1755015298673</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1755015298673</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -297,6 +181,7 @@
     <MESSAGE value="Initialise" />
     <MESSAGE value="Models version 0.1 - minimal working" />
     <MESSAGE value="Models version 1 - working tuned LLM and also a classifier model" />
-    <option name="LAST_COMMIT_MESSAGE" value="Models version 1 - working tuned LLM and also a classifier model" />
+    <MESSAGE value="Models with UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Models with UI" />
   </component>
 </project>
