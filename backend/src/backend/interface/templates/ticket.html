@@ -409,16 +409,16 @@
                 <span>ЖКХ Аналитика | AI Swag</span>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="upload_sound.html">Загрузить обращение</a></li>
-                <li><a href="tickets.html">Мои обращения</a></li>
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'upload' %}">Загрузить обращение</a></li>
+                <li><a href="{% url 'tickets' %}">Мои обращения</a></li>
                 <li><a href="#" class="btn">Кабинет</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="container">
-        <a href="tickets.html" class="back-link">
+        <a href="{% url 'tickets' %}" class="back-link">
             <i class="fas fa-arrow-left"></i> Назад к списку обращений
         </a>
         

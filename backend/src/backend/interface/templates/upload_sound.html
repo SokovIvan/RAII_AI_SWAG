@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Загружать звук| AI Swag - Интеллектуальный анализ звука</title>
+    <title>Загружать звук| ЖКХ Аналитика | AI Swag</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -273,13 +273,13 @@
         <nav>
             <div class="logo">
                 <i class="fas fa-headphones"></i>
-                <span>AI Swag</span>
+                <span>ЖКХ Аналитика | AI Swag</span>
             </div>
             <ul class="nav-links">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="upload_sound.html" class="active">Upload Sound</a></li>
-                <li><a href="tickets.html">My Analyses</a></li>
-                <li><a href="#" class="btn">Dashboard</a></li>
+                <li><a href="{% url 'home' %}">Домой</a></li>
+                <li><a href="{% url 'upload' %}" class="active">Загружать звук</a></li>
+                <li><a href="{% url 'tickets' %}">Мои анализы</a></li>
+                <li><a href="#" class="btn">Приборная панель</a></li>
             </ul>
         </nav>
     </header>
@@ -287,42 +287,42 @@
     <div class="container">
         <div class="upload-container">
             <div class="upload-header">
-                <h1>Upload Sound File</h1>
-                <p>AI-powered analysis that recognizes departments and converts speech to text automatically</p>
+                <h1>Загрузить звуковой файл </h1>
+                <p>Анализ на основе искусственного интеллекта, который распознает отделы и автоматически преобразует речь в текст</p>
             </div>
             
-            <div class="upload-box" id="dropZone">
-                <i class="fas fa-microphone-alt"></i>
-                <h3>Перетащите Ваш аудиофайл</h3>
-                <p>Поддерживаемые форматы: MP3, WAV, FLAC, AAC (макс. 100 МБ)</p>
-                <button class="btn" id="browseBtn">Select File</button>
-                <input type="file" id="fileInput" accept="audio/*" style="display: none;">
+ 
                 
-                <div class="file-info" id="fileInfo">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <p><strong>Selected file:</strong> <span id="fileName"></span></p>
-                        <button id="clearFile" style="background: none; border: none; color: #ff4444; cursor: pointer;">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                    <p><strong>File size:</strong> <span id="fileSize"></span></p>
-                    <p><strong>File type:</strong> <span id="fileType"></span></p>
-                </div>
+<div class="upload-box" id="dropZone">
+  <i class="fas fa-cloud-upload-alt"></i>
+  <h3>Перетащите аудиофайл сюда</h3>
+  <p>или</p>
+  <label for="fileInput" class="btn">Выберите файл</label>
+  <input type="file" id="fileInput" accept="audio/*" style="display: none;">
+  
+  <div class="file-info" id="fileInfo">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+      <p><strong>Выбран файл:</strong> <span id="fileName"></span></p>
+      <button id="clearFile" style="background: none; border: none; color: #ff4444; cursor: pointer;">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <p><strong>Размер:</strong> <span id="fileSize"></span></p>
+    <p><strong>Тип:</strong> <span id="fileType"></span></p>
+  </div>
+</div>
                 
-                <div class="progress-container" id="progressContainer">
-                    <div class="progress-bar" id="progressBar"></div>
-                </div>
-            </div>
+
             
             <form id="uploadForm">
                 <div class="form-group">
                     <label for="fileTitle">Анализ звука</label>
-                    <input type="text" id="fileTitle" class="form-control" placeholder="e.g., Customer Support Call - August 2025" required>
+                    <input type="text" id="fileTitle" class="form-control" placeholder="e.g., Звонок в службу поддержки клиентов - август 2025" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="fileDescription">Примечания (необязательно)</label>
-                    <textarea id="fileDescription" class="form-control" rows="3" placeholder="Add any relevant context about this audio..."></textarea>
+                    <textarea id="fileDescription" class="form-control" rows="3" placeholder="Добавьте любой соответствующий контекст к этому аудио..."></textarea>
                 </div>
                 
                 <div class="department-prediction" id="departmentPrediction">
@@ -350,189 +350,90 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const dropZone = document.getElementById('dropZone');
-            const fileInput = document.getElementById('fileInput');
-            const browseBtn = document.getElementById('browseBtn');
-            const fileInfo = document.getElementById('fileInfo');
-            const fileName = document.getElementById('fileName');
-            const fileSize = document.getElementById('fileSize');
-            const fileType = document.getElementById('fileType');
-            const uploadForm = document.getElementById('uploadForm');
-            const clearFile = document.getElementById('clearFile');
-            const progressContainer = document.getElementById('progressContainer');
-            const progressBar = document.getElementById('progressBar');
-            const departmentPrediction = document.getElementById('departmentPrediction');
-            const transcriptionPreview = document.getElementById('transcriptionPreview');
-            
-            // Handle file selection via button
-            browseBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                fileInput.click();
-            });
-            
-            // Handle file selection via input
-            fileInput.addEventListener('change', function() {
-                if (this.files.length) {
-                    handleFileSelection(this.files[0]);
-                }
-            });
-            
-            // Clear selected file
-            clearFile.addEventListener('click', function(e) {
-                e.stopPropagation();
-                resetFileInput();
-            });
-            
-            // Handle drag and drop
-            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-                dropZone.addEventListener(eventName, preventDefaults, false);
-            });
-            
-            function preventDefaults(e) {
-                e.preventDefault();
-                e.stopPropagation();
-            }
-            
-            ['dragenter', 'dragover'].forEach(eventName => {
-                dropZone.addEventListener(eventName, highlight, false);
-            });
-            
-            ['dragleave', 'drop'].forEach(eventName => {
-                dropZone.addEventListener(eventName, unhighlight, false);
-            });
-            
-            function highlight() {
-                dropZone.style.borderColor = var(--accent);
-                dropZone.style.backgroundColor = 'rgba(0, 210, 255, 0.05)';
-            }
-            
-            function unhighlight() {
-                dropZone.style.borderColor = '#ccc';
-                dropZone.style.backgroundColor = '';
-            }
-            
-            dropZone.addEventListener('drop', handleDrop, false);
-            
-            function handleDrop(e) {
-                const dt = e.dataTransfer;
-                const files = dt.files;
-                
-                if (files.length) {
-                    handleFileSelection(files[0]);
-                    fileInput.files = files;
-                }
-            }
-            
-            function handleFileSelection(file) {
-                // Validate file type
-                const validTypes = ['audio/mpeg', 'audio/wav', 'audio/x-wav', 'audio/flac', 'audio/x-flac', 'audio/aac'];
-                if (!validTypes.includes(file.type)) {
-                    alert('Please upload a valid audio file (MP3, WAV, FLAC, or AAC)');
-                    return;
-                }
-                
-                // Validate file size (100MB max)
-                if (file.size > 100 * 1024 * 1024) {
-                    alert('File size exceeds 100MB limit');
-                    return;
-                }
-                
-                displayFileInfo(file);
-                simulateAnalysis(file);
-            }
-            
-            function displayFileInfo(file) {
-                fileName.textContent = file.name;
-                fileSize.textContent = formatFileSize(file.size);
-                fileType.textContent = file.type.split('/')[1].toUpperCase() || 'Unknown';
-                fileInfo.style.display = 'block';
-            }
-            
-            function formatFileSize(bytes) {
-                if (bytes === 0) return '0 Bytes';
-                const k = 1024;
-                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-                const i = Math.floor(Math.log(bytes) / Math.log(k));
-                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-            }
-            
-            function resetFileInput() {
-                fileInput.value = '';
-                fileInfo.style.display = 'none';
-                departmentPrediction.style.display = 'none';
-                transcriptionPreview.style.display = 'none';
-            }
-            
-            function simulateAnalysis(file) {
-                // Show progress bar
-                progressContainer.style.display = 'block';
-                progressBar.style.width = '0%';
-                
-                // Simulate processing
-                let progress = 0;
-                const interval = setInterval(() => {
-                    progress += Math.random() * 10;
-                    progressBar.style.width = `${Math.min(progress, 100)}%`;
-                    
-                    if (progress >= 30) {
-                        // Show department prediction at 30%
-                        departmentPrediction.style.display = 'block';
-                        
-                        // Simulate different departments based on filename
-                        const departments = ['Customer Support', 'Sales', 'HR', 'Legal', 'Quality Assurance'];
-                        const randomDept = departments[Math.floor(Math.random() * departments.length)];
-                        document.getElementById('predictedDepartment').textContent = randomDept;
-                        
-                        const confidence = Math.floor(Math.random() * 30) + 70; // 70-100%
-                        document.getElementById('confidenceLevel').textContent = `${confidence}%`;
-                    }
-                    
-                    if (progress >= 70) {
-                        // Show transcription preview at 70%
-                        transcriptionPreview.style.display = 'block';
-                        
-                        // Simulate transcription
-                        const previewText = document.getElementById('previewText');
-                        if (progress < 90) {
-                            previewText.innerHTML = "Processing speech recognition...";
-                        } else {
-                            previewText.innerHTML = `
-                                <p><strong>00:01:</strong> Hello, thank you for calling AI Swag support.</p>
-                                <p><strong>00:04:</strong> How can I assist you today?</p>
-                                <p><strong>00:07:</strong> I'm having trouble with my sound analysis...</p>
-                            `;
-                        }
-                    }
-                    
-                    if (progress >= 100) {
-                        clearInterval(interval);
-                        progressBar.style.backgroundColor = var(--success);
-                    }
-                }, 300);
-            }
-            
-            // Handle form submission
-            uploadForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                if (!fileInput.files.length) {
-                    alert('Please select an audio file to upload');
-                    return;
-                }
-                
-                const file = fileInput.files[0];
-                const title = document.getElementById('fileTitle').value;
-                
-                // Here you would typically submit to your backend
-                alert(`Analysis started for "${title}". You'll be notified when complete.`);
-                
-                // Redirect to tickets page after 3 seconds (simulating processing)
-                setTimeout(() => {
-                    window.location.href = 'tickets.html';
-                }, 3000);
-            });
-        });
+document.addEventListener('DOMContentLoaded', function() {
+  const fileInput = document.getElementById('fileInput');
+  const fileInfo = document.getElementById('fileInfo');
+  const fileName = document.getElementById('fileName');
+  const fileSize = document.getElementById('fileSize');
+  const fileType = document.getElementById('fileType');
+  const clearFile = document.getElementById('clearFile');
+  
+  // Click on the label will automatically trigger the file input
+  // No need for manual click event on the button
+  
+  // Handle file selection
+  fileInput.addEventListener('change', function() {
+    if (this.files.length) {
+      const file = this.files[0];
+      displayFileInfo(file);
+    }
+  });
+  
+  // Clear file selection
+  clearFile.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    fileInput.value = '';
+    fileInfo.style.display = 'none';
+  });
+  
+  function displayFileInfo(file) {
+    fileName.textContent = file.name;
+    fileSize.textContent = formatFileSize(file.size);
+    fileType.textContent = file.type.split('/')[1].toUpperCase() || 'Неизвестно';
+    fileInfo.style.display = 'block';
+  }
+  
+  function formatFileSize(bytes) {
+    if (bytes === 0) return '0 Байт';
+    const k = 1024;
+    const sizes = ['Байт', 'КБ', 'МБ', 'ГБ'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  }
+  
+  // Drag and drop functionality (optional)
+  const dropZone = document.getElementById('dropZone');
+  
+  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    dropZone.addEventListener(eventName, preventDefaults, false);
+  });
+  
+  function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  
+  ['dragenter', 'dragover'].forEach(eventName => {
+    dropZone.addEventListener(eventName, highlight, false);
+  });
+  
+  ['dragleave', 'drop'].forEach(eventName => {
+    dropZone.addEventListener(eventName, unhighlight, false);
+  });
+  
+  function highlight() {
+    dropZone.style.borderColor = '#00d2ff';
+    dropZone.style.backgroundColor = 'rgba(0, 210, 255, 0.05)';
+  }
+  
+  function unhighlight() {
+    dropZone.style.borderColor = '#ccc';
+    dropZone.style.backgroundColor = '';
+  }
+  
+  dropZone.addEventListener('drop', handleDrop, false);
+  
+  function handleDrop(e) {
+    const dt = e.dataTransfer;
+    const files = dt.files;
+    
+    if (files.length) {
+      fileInput.files = files;
+      displayFileInfo(files[0]);
+    }
+  }
+});
     </script>
 </body>
 </html>
