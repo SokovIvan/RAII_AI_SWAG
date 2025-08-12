@@ -323,7 +323,7 @@
   </div>
 </div>
 
-            <form id="uploadForm">
+            <form id="uploadForm" enctype="multipart/form-data">
                 <div class="form-group">
                     <input type="text" id="fileTitle" class="form-control" placeholder="Текстовая заявка(при отсутствии звукового файла)" required>
                 </div>
@@ -360,6 +360,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   const uploadForm = document.getElementById('uploadForm');
   const fileInput = document.getElementById('fileInput');
+  const fileTitle = document.getElementById('fileTitle');
   const fileDescription = document.getElementById('fileDescription');
   const departmentPrediction = document.getElementById('departmentPrediction');
   const transcriptionPreview = document.getElementById('transcriptionPreview');
@@ -370,11 +371,24 @@ document.addEventListener('DOMContentLoaded', function() {
   // Вставляем контейнер прогресса перед кнопкой отправки
   uploadForm.insertBefore(progressContainer, uploadForm.querySelector('.submit-btn'));
 
+  // Скрываем/показываем текстовое поле в зависимости от наличия файла
+  fileInput.addEventListener('change', function() {
+    if (this.files.length) {
+      fileTitle.required = false;
+      fileTitle.style.display = 'none';
+      fileTitle.previousElementSibling.style.display = 'none'; // Скрываем label
+    } else {
+      fileTitle.required = true;
+      fileTitle.style.display = 'block';
+      fileTitle.previousElementSibling.style.display = 'block'; // Показываем label
+    }
+  });
+
   uploadForm.addEventListener('submit', function(e) {
     e.preventDefault();
 
     const file = fileInput.files[0];
-    const title = document.getElementById('fileTitle').value;
+    const title = fileTitle.value.trim();
 
     if (!file && !title) {
       alert('Пожалуйста, загрузите аудиофайл или введите текстовую заявку');
@@ -395,7 +409,7 @@ document.addEventListener('DOMContentLoaded', function() {
       formData.append('title', title);
     }
 
-    // Имитация прогресса (в реальном приложении можно использовать axios с onUploadProgress)
+    // Имитация прогресса
     let progress = 0;
     const progressInterval = setInterval(() => {
       progress += 5;
@@ -411,7 +425,12 @@ document.addEventListener('DOMContentLoaded', function() {
         'X-CSRFToken': getCookie('csrftoken'),
       },
     })
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        return response.json().then(err => Promise.reject(err));
+      }
+      return response.json();
+    })
     .then(data => {
       clearInterval(progressInterval);
       progressBar.style.width = '100%';
@@ -425,7 +444,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Показываем предсказание отдела
         document.getElementById('predictedDepartment').textContent = result.group;
-        document.getElementById('confidenceLevel').textContent = 'Высокая'; // Можно добавить реальный уровень уверенности из модели
+        document.getElementById('confidenceLevel').textContent = 'Высокая';
         departmentPrediction.style.display = 'block';
 
         // Показываем транскрипцию
@@ -444,7 +463,7 @@ document.addEventListener('DOMContentLoaded', function() {
     .catch(error => {
       clearInterval(progressInterval);
       progressContainer.style.display = 'none';
-      alert('Ошибка при загрузке файла: ' + error.message);
+      alert('Ошибка при загрузке файла: ' + (error.message || JSON.stringify(error)));
     });
   });
 
@@ -462,90 +481,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
     return cookieValue;
-  }
-});
-document.addEventListener('DOMContentLoaded', function() {
-  const fileInput = document.getElementById('fileInput');
-  const fileInfo = document.getElementById('fileInfo');
-  const fileName = document.getElementById('fileName');
-  const fileSize = document.getElementById('fileSize');
-  const fileType = document.getElementById('fileType');
-  const clearFile = document.getElementById('clearFile');
-  
-  // Click on the label will automatically trigger the file input
-  // No need for manual click event on the button
-  
-  // Handle file selection
-  fileInput.addEventListener('change', function() {
-    if (this.files.length) {
-      const file = this.files[0];
-      displayFileInfo(file);
-    }
-  });
-  
-  // Clear file selection
-  clearFile.addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    fileInput.value = '';
-    fileInfo.style.display = 'none';
-  });
-  
-  function displayFileInfo(file) {
-    fileName.textContent = file.name;
-    fileSize.textContent = formatFileSize(file.size);
-    fileType.textContent = file.type.split('/')[1].toUpperCase() || 'Неизвестно';
-    fileInfo.style.display = 'block';
-  }
-  
-  function formatFileSize(bytes) {
-    if (bytes === 0) return '0 Байт';
-    const k = 1024;
-    const sizes = ['Байт', 'КБ', 'МБ', 'ГБ'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-  }
-  
-  // Drag and drop functionality (optional)
-  const dropZone = document.getElementById('dropZone');
-  
-  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-    dropZone.addEventListener(eventName, preventDefaults, false);
-  });
-  
-  function preventDefaults(e) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
-  
-  ['dragenter', 'dragover'].forEach(eventName => {
-    dropZone.addEventListener(eventName, highlight, false);
-  });
-  
-  ['dragleave', 'drop'].forEach(eventName => {
-    dropZone.addEventListener(eventName, unhighlight, false);
-  });
-  
-  function highlight() {
-    dropZone.style.borderColor = '#00d2ff';
-    dropZone.style.backgroundColor = 'rgba(0, 210, 255, 0.05)';
-  }
-  
-  function unhighlight() {
-    dropZone.style.borderColor = '#ccc';
-    dropZone.style.backgroundColor = '';
-  }
-  
-  dropZone.addEventListener('drop', handleDrop, false);
-  
-  function handleDrop(e) {
-    const dt = e.dataTransfer;
-    const files = dt.files;
-    
-    if (files.length) {
-      fileInput.files = files;
-      displayFileInfo(files[0]);
-    }
   }
 });
     </script>

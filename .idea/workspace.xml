@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2277f113-51fc-489e-aef8-253a526f7fe5" name="Changes" comment="Models with UI">
+    <list default="true" id="2277f113-51fc-489e-aef8-253a526f7fe5" name="Changes" comment="Models with UI - working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/backend/backend/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/backend/backend/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/backend/interface/templates/upload_sound.html" beforeDir="false" afterPath="$PROJECT_DIR$/UI/backend/interface/templates/upload_sound.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/backend/interface/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/backend/interface/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/backend/interface/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/backend/interface/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/readme.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="modelsAI" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -163,7 +160,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755015298673</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Models with UI - working">
+      <option name="closed" value="true" />
+      <created>1755018394747</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1755018394747</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -182,6 +187,7 @@
     <MESSAGE value="Models version 0.1 - minimal working" />
     <MESSAGE value="Models version 1 - working tuned LLM and also a classifier model" />
     <MESSAGE value="Models with UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Models with UI" />
+    <MESSAGE value="Models with UI - working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Models with UI - working" />
   </component>
 </project>
