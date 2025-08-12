@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЖКХ Аналитика |AI Swag</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #00d2ff;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+        }
+        
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        @font-face {
+            font-family: 'Poppins';
+            src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .ticket-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .ticket-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .ticket-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: #666;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+        
+        .ticket-actions {
+            display: flex;
+            gap: 0.8rem;
+        }
+        
+        .ticket-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .card-title i {
+            color: var(--accent);
+        }
+        
+        .department-tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .department-support {
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .department-sales {
+            background-color: #e8f5e9;
+            color: #388e3c;
+        }
+        
+        .department-hr {
+            background-color: #f3e5f5;
+            color: #8e24aa;
+        }
+        
+        .confidence-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            background-color: #f0f0f0;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .audio-player {
+            width: 100%;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            background: #f5f5f5;
+        }
+        
+        .transcription-container {
+            margin-top: 1.5rem;
+        }
+        
+        .transcription-line {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .transcription-line:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .speaker {
+            font-weight: 600;
+            color: var(--primary);
+            min-width: 120px;
+        }
+        
+        .timestamp {
+            color: #666;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+        }
+        
+        .analysis-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .analysis-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .analysis-card h4 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .analysis-card i {
+            color: var(--accent);
+        }
+        
+        .key-phrases {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .phrase-tag {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            background-color: #e0e0e0;
+            font-size: 0.8rem;
+        }
+        
+        .sentiment-score {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .sentiment-bar {
+            flex: 1;
+            height: 8px;
+            background: linear-gradient(to right, #ff4d4d, #ffcc00, #4CAF50);
+            border-radius: 4px;
+            position: relative;
+        }
+        
+        .sentiment-marker {
+            position: absolute;
+            top: -4px;
+            width: 8px;
+            height: 16px;
+            background-color: var(--dark);
+            border-radius: 4px;
+            transform: translateX(-50%);
+        }
+        
+        .speaker-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .speaker-stat {
+            background: #f5f5f5;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .transcription-line {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .speaker {
+                min-width: auto;
+            }
+        }
+        .department-housing {
+            background-color: #e1f5fe;
+            color: #0277bd;
+        }
+        
+        .department-electricity {
+            background-color: #fff8e1;
+            color: #ff8f00;
+        }
+        
+        .department-water {
+            background-color: #e0f7fa;
+            color: #00838f;
+        }
+        
+        .department-repairs {
+            background-color: #f1f8e9;
+            color: #558b2f;
+        }
+        
+        .priority-high {
+            color: #d32f2f;
+            font-weight: 600;
+        }
+        
+        .priority-medium {
+            color: #fb8c00;
+            font-weight: 600;
+        }
+        
+        .priority-low {
+            color: #388e3c;
+            font-weight: 600;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-building"></i>
+                <span>ЖКХ Аналитика | AI Swag</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'upload' %}">Загрузить обращение</a></li>
+                <li><a href="{% url 'tickets' %}">Мои обращения</a></li>
+                <li><a href="#" class="btn">Кабинет</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="{% url 'tickets' %}" class="back-link">
+            <i class="fas fa-arrow-left"></i> Назад к списку обращений
+        </a>
+        
+        <div class="ticket-header">
+            <div>
+                <h1 class="ticket-title">
+                    <i class="fas fa-file-audio"></i>
+                    Обращение по адресу ул. Ленина, д.15, кв.42
+                    <span class="department-tag department-housing">Жилищные услуги</span>
+                    <span class="confidence-badge">
+                        <i class="fas fa-check-circle" style="color: var(--success);"></i>
+                        94% точность
+                    </span>
+                </h1>
+                <div class="ticket-meta">
+                    <span><i class="far fa-clock"></i> 8 мин. 15 сек.</span>
+                    <span><i class="far fa-calendar-alt"></i> 15 Август 2025, 09:45</span>
+                    <span><i class="fas fa-microphone"></i> 1 говорящий</span>
+                    <span><i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i> <span class="priority-high">Высокий приоритет</span></span>
+                </div>
+            </div>
+            <div class="ticket-actions">
+                <button class="btn btn-primary">
+                    <i class="fas fa-download"></i> Скачать отчёт
+                </button>
+                <button class="btn btn-outline">
+                    <i class="fas fa-share-alt"></i> Переслать
+                </button>
+            </div>
+        </div>
+        
+        <div class="ticket-card">
+            <div class="card-header">
+                <h2 class="card-title">
+                    <i class="fas fa-music"></i>
+                    Аудиозапись обращения
+                </h2>
+                <div class="confidence-badge">
+                    <i class="fas fa-check-circle" style="color: var(--success);"></i>
+                    Качество звука: хорошее
+                </div>
+            </div>
+            
+            <audio controls class="audio-player">
+                <source src="sample.mp3" type="audio/mpeg">
+                Ваш браузер не поддерживает аудио элемент.
+            </audio>
+            
+            <div class="transcription-container">
+                <h2 class="card-title" style="margin-bottom: 1rem;">
+                    <i class="fas fa-comments"></i>
+                    Полная расшифровка
+                </h2>
+                
+                <div class="transcription-line">
+                    <div class="speaker">Обращение <span class="timestamp">[00:00:05]</span></div>
+                    <div class="text">Добрый день! Я живу по адресу улица Ленина, дом 15, квартира 42. Хочу сообщить о серьёзной проблеме с канализацией.</div>
+                </div>
+                
+                <div class="transcription-line">
+                    <div class="speaker">AI Swag <span class="timestamp">[00:00:18]</span></div>
+                    <div class="text">
+                        <span class="department-tag department-housing">Определён отдел: Аварийная служба</span>
+                        Обнаружены ключевые слова: "канализация", "протечка", "авария"
+                    </div>
+                </div>
+                
+                <div class="transcription-line">
+                    <div class="speaker">Обращение <span class="timestamp">[00:00:35]</span></div>
+                    <div class="text">У нас уже третий день течёт канализационная труба на пятом этаже. Вонь страшная, вода капает на лестничную клетку. Соседи снизу жалуются, что у них на потолке пятна появились.</div>
+                </div>
+                
+                <div class="transcription-line">
+                    <div class="speaker">AI Swag <span class="timestamp">[00:01:10]</span></div>
+                    <div class="text">
+                        <span class="department-tag department-housing">Приоритет: Высокий</span>
+                        Автоматически создана заявка №ЖКХ-2025-0421 в аварийную службу
+                    </div>
+                </div>
+                
+                <div class="transcription-line">
+                    <div class="speaker">Обращение <span class="timestamp">[00:01:25]</span></div>
+                    <div class="text">Мы уже звонили в управляющую компанию вчера, но никто не пришёл. Это совершенно недопустимо! Прошу принять срочные меры.</div>
+                </div>
+                
+                <div class="transcription-line">
+                    <div class="speaker">AI Swag <span class="timestamp">[00:01:50]</span></div>
+                    <div class="text">
+                        <span class="department-tag department-housing">Рекомендация</span>
+                        Отправлено уведомление начальнику ЖЭУ. Ожидаемое время реагирования: 2 часа
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ticket-card">
+            <div class="card-header">
+                <h2 class="card-title">
+                    <i class="fas fa-chart-bar"></i>
+                    Результаты анализа
+                </h2>
+            </div>
+            
+            <div class="analysis-results">
+                <div class="analysis-card">
+                    <h4><i class="fas fa-bullseye"></i> Ключевые проблемы</h4>
+                    <p>Основные проблемы, обнаруженные в обращении:</p>
+                    <div class="key-phrases">
+                        <span class="phrase-tag">протечка канализации</span>
+                        <span class="phrase-tag">затопление</span>
+                        <span class="phrase-tag">неприятный запах</span>
+                        <span class="phrase-tag">повреждение имущества</span>
+                        <span class="phrase-tag">отсутствие реакции</span>
+                    </div>
+                </div>
+                
+                <div class="analysis-card">
+                    <h4><i class="fas fa-smile"></i> Эмоциональная окраска</h4>
+                    <p>Тональность обращения:</p>
+                    <div class="sentiment-score">
+                        <span>Спокойная</span>
+                        <div class="sentiment-bar">
+                            <div class="sentiment-marker" style="left: 20%;"></div>
+                        </div>
+                        <span>Эмоциональная</span>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">
+                        <i class="fas fa-info-circle" style="color: var(--accent);"></i>
+                        Тональность: негативная с элементами возмущения (оценка: 2.8/10)
+                    </p>
+                </div>
+                
+                <div class="analysis-card">
+                    <h4><i class="fas fa-tachometer-alt"></i> Срочность</h4>
+                    <div style="margin-top: 1rem;">
+                        <p><strong>Приоритет:</strong> <span class="priority-high">Высокий</span></p>
+                        <p><strong>Рекомендуемый срок решения:</strong> 24 часа</p>
+                        <p><strong>Категория:</strong> Аварийная ситуация</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ticket-card">
+            <div class="card-header">
+                <h2 class="card-title">
+                    <i class="fas fa-cogs"></i>
+                    Назначение и маршрутизация
+                </h2>
+            </div>
+            
+            <div class="analysis-results">
+                <div class="analysis-card">
+                    <h4><i class="fas fa-user-tie"></i> Ответственный отдел</h4>
+                    <div style="margin-top: 1rem;">
+                        <p><strong>Основной отдел:</strong> Аварийная служба ЖКХ</p>
+                        <p><strong>Дополнительно уведомлены:</strong></p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Управляющая компания "Наш Дом"</li>
+                            <li>Технический надзор района</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="analysis-card">
+                    <h4><i class="fas fa-history"></i> История обращений</h4>
+                    <div style="margin-top: 1rem;">
+                        <p><strong>По этому адресу за месяц:</strong> 3 обращения</p>
+                        <p><strong>Последнее:</strong> 10.05.2025 - Засор мусоропровода</p>
+                        <p><strong>Статус прошлого обращения:</strong> Решено</p>
+                    </div>
+                </div>
+                
+                <div class="analysis-card">
+                    <h4><i class="fas fa-tags"></i> Метки и категории</h4>
+                    <div class="key-phrases" style="margin-top: 0.5rem;">
+                        <span class="phrase-tag">авария</span>
+                        <span class="phrase-tag">канализация</span>
+                        <span class="phrase-tag">срочно</span>
+                        <span class="phrase-tag">жалоба</span>
+                        <span class="phrase-tag">многоквартирный дом</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem; padding: 1.5rem; background-color: #e8f5e9; border-radius: 8px;">
+                <h4 class="card-title" style="margin-bottom: 1rem;">
+                    <i class="fas fa-check-circle" style="color: var(--success);"></i>
+                    Текущий статус
+                </h4>
+                <p><strong>Заявка №ЖКХ-2025-0421</strong> принята в работу аварийной службой. Ожидайте специалиста в течение 2 часов.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">Последнее обновление: 15.05.2025 10:15</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div style="text-align: center; padding: 2rem 0; color: white;">
+                <p>&copy; 2025 ЖКХ Аналитика. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Анимация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            const transcriptionLines = document.querySelectorAll('.transcription-line');
+            
+            transcriptionLines.forEach((line, index) => {
+                setTimeout(() => {
+                    line.style.opacity = 1;
+                    line.style.transform = 'translateY(0)';
+                }, index * 100);
+                
+                line.style.opacity = 0;
+                line.style.transform = 'translateY(10px)';
+                line.style.transition = 'all 0.3s ease';
+            });
+            
+            // Имитация загрузки анализа
+            setTimeout(() => {
+                const sentimentMarker = document.querySelector('.sentiment-marker');
+                sentimentMarker.style.transition = 'left 1.5s ease-out';
+                sentimentMarker.style.left = '20%';
+            }, 500);
+        });
+    </script>
+</body>
+</html>

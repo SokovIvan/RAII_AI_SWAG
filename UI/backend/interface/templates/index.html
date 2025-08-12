@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Swag | ЖКХ Аналитика</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+   
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #00d2ff;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        @font-face {
+            font-family: 'Poppins';
+            src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 6rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(106,17,203,0.1) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            color: #555;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin: 5rem 0;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            transition: all 0.4s ease;
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .feature-card i {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .feature-card p {
+            color: #666;
+        }
+        
+        .demo-section {
+            display: flex;
+            align-items: center;
+            margin: 6rem 0;
+            gap: 4rem;
+        }
+        
+        .demo-content {
+            flex: 1;
+        }
+        
+        .demo-visual {
+            flex: 1;
+            background: linear-gradient(145deg, #f0f0f0, #ffffff);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .demo-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+            opacity: 0.1;
+        }
+        
+        .department-tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tag-support {
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .tag-sales {
+            background-color: #e8f5e9;
+            color: #388e3c;
+        }
+        
+        .tag-hr {
+            background-color: #f3e5f5;
+            color: #8e24aa;
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+            border-radius: 15px;
+            margin: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+        }
+        
+        .cta .btn {
+            background-color: white;
+            color: var(--primary);
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+            position: relative;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: left;
+            padding: 0 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .demo-section {
+                flex-direction: column;
+            }
+        }
+        
+        /* Animation classes */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-headphones"></i>
+                <span>AI Swag | ЖКХ Аналитика</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Главная</a></li>
+                <li><a href="{% url 'upload' %}" class="btn">Загрузить аудио</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h1>Умный анализ звука с AI Swag</h1>
+            <p>Преобразуйте аудио в полезные данные с помощью нашей платформы на базе ИИ, которая автоматически распознаёт отделы и преобразует речь в текст.</p>
+            <a href="{% url 'upload' %}" class="btn">Проанализировать первый файл</a>
+
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <i class="fas fa-microphone-alt"></i>
+                <h3>Умная загрузка</h3>
+                <p>Просто загружайте аудиофайлы, а наш ИИ автоматически классифицирует их по отделам и говорящим.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-brain"></i>
+                <h3>Распознавание отделов</h3>
+                <p>Наш продвинутый ИИ определяет, относится ли аудио к поддержке, продажам, HR или другим отделам.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-comments"></i>
+                <h3>Точная расшифровка</h3>
+                <p>Получайте точное преобразование речи в текст с идентификацией говорящих и временными метками.</p>
+            </div>
+        </section>
+
+        <section class="demo-section">
+            <div class="demo-content">
+                <h2 style="font-size: 2.2rem; margin-bottom: 1.5rem; color: var(--dark);">Как работает AI Swag</h2>
+                <p style="margin-bottom: 1.5rem; color: #666;">Наша платформа использует передовые технологии машинного обучения для анализа аудиофайлов и автоматически:</p>
+                <ul style="margin-bottom: 2rem; color: #666; list-style-position: inside;">
+                    <li style="margin-bottom: 0.8rem;">Классифицирует аудио по отделам с оценкой точности</li>
+                    <li style="margin-bottom: 0.8rem;">Транскрибирует речь в текст с высокой точностью</li>
+                    <li style="margin-bottom: 0.8rem;">Определяет разных говорящих в беседах</li>
+                    <li>Генерирует полезные выводы из ваших аудиоданных</li>
+                </ul>
+                <a href="{% url 'upload' %}" class="btn">Попробовать сейчас</a>
+            </div>
+            <div class="demo-visual">
+                <div style="position: relative; z-index: 2;">
+                    <div style="display: flex; margin-bottom: 1.5rem;">
+                        <div style="flex: 1; margin-right: 1rem;">
+                            <div style="background: white; border-radius: 8px; padding: 1rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 1rem;">
+                                <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                                    <div style="width: 40px; height: 40px; background: #e3f2fd; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                                        <i class="fas fa-headset" style="color: #1976d2;"></i>
+                                    </div>
+                                    <div>
+                                        <div style="font-weight: 600;">Поддержка клиентов</div>
+                                        <div style="font-size: 0.8rem; color: #666;">85% точности</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="background: white; border-radius: 8px; padding: 1rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                                <div style="font-weight: 600; margin-bottom: 0.5rem;">Ключевые фразы</div>
+                                <div style="font-size: 0.9rem;">
+                                    <span class="department-tag">"техническая проблема"</span>
+                                    <span class="department-tag">"возврат средств"</span>
+                                    <span class="department-tag">"проблема с аккаунтом"</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="flex: 1;">
+                            <div style="background: white; border-radius: 8px; padding: 1rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); height: 100%;">
+                                <div style="font-weight: 600; margin-bottom: 1rem;">Предпросмотр транскрипции</div>
+                                <div style="font-size: 0.9rem; line-height: 1.6;">
+                                    <div style="margin-bottom: 0.5rem;"><span style="color: #2575fc;">[00:01] Оператор:</span> Чем могу помочь?</div>
+                                    <div style="margin-bottom: 0.5rem;"><span style="color: #2575fc;">[00:03] Клиент:</span> У меня проблемы с анализом аудио...</div>
+                                    <div><span style="color: #2575fc;">[00:07] AI Swag:</span> Обнаружена техническая проблема</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background: white; border-radius: 8px; padding: 1rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <div style="font-weight: 600;">Прогресс анализа</div>
+                            <div style="font-size: 0.8rem; color: #666;">92% завершено</div>
+                        </div>
+                        <div style="height: 8px; background: #f0f0f0; border-radius: 4px; overflow: hidden;">
+                            <div style="width: 92%; height: 100%; background: linear-gradient(to right, var(--primary), var(--secondary)); border-radius: 4px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <h2>Готовы преобразовать ваши аудиофайлы?</h2>
+            <p>Присоединяйтесь к сотням компаний, использующих AI Swag для анализа звонков, встреч и аудиоконтента.</p>
+            <a href="{% url 'upload' %}" class="btn">Начать анализ</a>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>AI Swag</h3>
+                <p style="color: #aaa; margin-bottom: 1rem;">Умный анализ звука на базе ИИ.</p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Продукт</h3>
+                <ul>
+                    <li><a href="#">Возможности</a></li>
+                    <li><a href="#">Цены</a></li>
+                    <li><a href="#">API</a></li>
+                    <li><a href="#">Интеграции</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Ресурсы</h3>
+                <ul>
+                    <li><a href="#">Документация</a></li>
+                    <li><a href="#">Обучение</a></li>
+                    <li><a href="#">Блог</a></li>
+                    <li><a href="#">Поддержка</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Компания</h3>
+                <ul>
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Карьера</a></li>
+                    <li><a href="#">Конфиденциальность</a></li>
+                    <li><a href="#">Условия</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 AI Swag. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for feature cards on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const featureCards = document.querySelectorAll('.feature-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            featureCards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
