@@ -1,3 +1,7 @@
 from django.shortcuts import render
 
-# Create your views here.
+def ticket(request, id):
+    ...
+
+def tickets(request):
+    ...

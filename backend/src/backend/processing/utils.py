@@ -1,3 +1,3 @@
-def process(record):
+def process(record_path):
     ...
     #TODO
